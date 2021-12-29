@@ -2,47 +2,45 @@
 import '../componentsLogIn/login.css';
 import React, { useState } from 'react';
 import LogInForm from '../componentsLogIn/loginForm';
+import axios from 'axios';
 
 function LogIn() {
-    const adminUser = {
-        email: "admin@admin.com",
-        password: "admin123"
-      }
-    
-      const [user, setUser] = useState({name: "", email: ""});
-      const [error, setError] = useState("");
-    
-      const Login = details => {
-        console.log(details);
+    const [user, setUser] = useState({ username: "", password: "" });
+    const [error, setError] = useState("");
 
-        if(details.email == adminUser.email && details.password == adminUser.password)
-        {
-            console.log("Loged in");
-            setUser({
-                name: details.name,
-                email: details.email
-            });
-        }
-        else
-        {
-            setError("Details do not match!");
-            console.log("Details do not match!");
-        }
-      }
-    
-      const Logout = () => {
-        setUser({name:"", email:""});
-      }
-    
-    return(
-    <div className='login'>
-        {(user.email != "") ? (
-            <div className='welcome'>
-                <h2>Welcome, <span>{user.name}</span></h2>
-                <button onClick={Logout}>Logout</button>
-            </div>
-        ) : (<LogInForm Login={Login} error={error} />)}
-    </div>
+    const Login = details => {
+        console.log(details);
+        const token = Buffer.from(details.username + ':' + details.password, 'utf8').toString('base64');
+        console.log(token);
+        axios.post("http://localhost:8080/user/login", {}, { headers: { 'Authorization': "Basic " + token } })
+            .then(res => {
+                console.log(res);
+                if (res.status != 200)
+                    setUser({});
+                else {
+                    localStorage.setItem("username", details.username);
+                    localStorage.setItem("password", details.password);
+                }
+            }
+            )
+    }
+
+
+    const Logout = () => {
+        setUser({ username: "", password: "" });
+    }
+
+    return (
+        <div className='login'>
+            {(user.email != "") ? (
+                <form>
+                    <div className='form-inner'>
+                        <h2>Welcome, <span>{localStorage.getItem("username")}</span></h2>
+                        <input type="button" value="Logout" onClick={Logout} />
+                    </div>
+                </form>
+            ) : (<LogInForm Login={Login} error={error} />)}
+        </div>
     )
 }
 
