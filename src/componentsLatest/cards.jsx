@@ -9,63 +9,60 @@ class Cards extends React.Component {
         number: [''],
         imagesArray: [''],
         urlsArray: [''],
-        titlesArray: ['']
+        titlesArray: [''],
+        isLoaded: false
     };
 
     componentDidMount() {
-        let response = axios.get('https://newsapi.org/v2/everything?q=f1&pages=1&pageSize=20&sortBy=publishedAt&language=en&apiKey=2d55fedbd9b34f3baed1d26e1adabff3')
-        .then(res => {
+        let response = axios.get('https://newsapi.org/v2/everything?q=%22f1%22+%22news%22&pages=1&pageSize=20&sortBy=publishedAt&language=en&apiKey=2d55fedbd9b34f3baed1d26e1adabff3')
+            .then(res => {
 
-            this.state.imagesArray = res.data.articles.map((i) => i.urlToImage);
-            this.state.urlsArray = res.data.articles.map((i) => i.url);
-            this.state.titlesArray = res.data.articles.map((i) => i.title);
-/*
-            const images = res.data.articles.map(i => i.urlToImage);
-            const urls = res.data.articles.map(i => i.url);
-            const titles = res.data.articles.map(i => i.title);
-   
-            this.setState({
-                images,titles,urls
-            });*/
+                this.state.imagesArray = res.data.articles.map((i) => i.urlToImage);
+                this.state.urlsArray = res.data.articles.map((i) => i.url);
+                this.state.titlesArray = res.data.articles.map((i) => i.title);
 
-            console.log(this.state.imagesArray[2]);
-            console.log(this.state.titlesArray);
-            console.log(this.state.urlsArray)
+                for (var i = 0; i < this.state.imagesArray.length; i++) {
+                    this.state.number[i] = i;
+                }
 
-            for(var i = 0; i < this.state.imagesArray.length; i++)
-            {
-                this.state.number[i] = i;
-            }
-            console.log(this.state.number);
-        });
-      }
+                if (this.state.urlsArray.length > 0)
+                    this.state.isLoaded = true;
+                console.log(this.state.number);
+                this.forceUpdate();
+            });
+    }
 
-
-
-      render(){
-          return (
+    render() {
+        return !this.state.isLoaded ?
+            (
+                // TODO: Loading gif
+                <div>
+                </div>
+            )
+            :
+            (
                 <div class="wrapper">
 
-                    {this.state.number.map((i) => <Card key={this.state.number[i]} 
-                                                        title={this.state.titlesArray[i]} 
-                                                        image={this.state.imagesArray[i]} 
-                                                        url={this.state.urlsArray[i]}/>
-                                            )}
-               </div>
-          );
-      }
+                    {this.state.number.map((i) => <Card key={this.state.number[i]}
+                        title={this.state.titlesArray[i]}
+                        image={this.state.imagesArray[i]}
+                        url={this.state.urlsArray[i]} />
+                    )}
+                </div>
+            );
+    }
 }
 
 export default Cards;
 
 
 
-        /*  this.setState({
-              image: push(jsonData.articles.map((i) => i.urlToImage)),
-              title: push(jsonData.articles.map((i) => i.title)),
-              url: push(jsonData.articles.map((i) => i.url))
-          });
-          console.log(this.state);*/
+/*  this.setState({
+      image: push(jsonData.articles.map((i) => i.urlToImage)),
+      title: push(jsonData.articles.map((i) => i.title)),
+      url: push(jsonData.articles.map((i) => i.url))
+  });
+  console.log(this.state);*/
 /*
           function len()
           {

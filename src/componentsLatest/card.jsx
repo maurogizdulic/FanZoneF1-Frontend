@@ -6,18 +6,18 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect,Link
-  } from "react-router-dom";
+    Redirect, Link
+} from "react-router-dom";
 
 class Card extends React.Component {
 
-    render() { 
+    render() {
 
         return (
             <div class="card">
                 <div class="card_body">
                     <div class="card_image">
-                    <img src={this.props.image} alt="Nije se učitala slika!" />
+                        <img src={this.props.image} alt="Nije se učitala slika!" />
                     </div>
                     <h2 className="card_title">{this.props.title}</h2>
                 </div>
@@ -29,8 +29,8 @@ class Card extends React.Component {
 
 const openInNewTab = (url) => {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
-   // if (newWindow) newWindow.opener = null
-  }
+    // if (newWindow) newWindow.opener = null
+}
 
 export default Card;
 

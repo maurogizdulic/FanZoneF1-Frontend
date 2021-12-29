@@ -7,12 +7,12 @@ import {
     Route,
     Redirect,
     Link,
-  } from "react-router-dom";
+} from "react-router-dom";
 
 
-function LogInForm( {Login, error}){
+function LogInForm({ Login, error }) {
 
-    const [details, setDetails] = useState({name: "", email: "", password: ""});
+    const [details, setDetails] = useState({ name: "", email: "", password: "" });
 
     const submitHandler = e => {
         e.preventDefault();
@@ -27,20 +27,20 @@ function LogInForm( {Login, error}){
                 {(error != "") ? (<div className='error'>{error}</div>) : ""}
                 <div className="form-group">
                     <label htmlFor="name">Name:</label>
-                    <input type="text" required name="name" id="name" onChange={e => setDetails({...details, name: e.target.value})} value={details.name}/>
+                    <input type="text" required name="name" id="name" onChange={e => setDetails({ ...details, name: e.target.value })} value={details.name} />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
-                    <input type="email" required name="email" id="email" onChange={e => setDetails({...details, email: e.target.value})} value={details.email}/>
+                    <input type="email" required name="email" id="email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="password">Password:</label>
-                    <input type="password" required name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
+                    <input type="password" required name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
                 </div>
                 <input type="submit" value="Log in" />
-                <input type="button" value="Sign up" onClick={() => openSignUp("./signup")}/>
+                <input type="button" value="Sign up" onClick={() => openSignUp("./signup")} />
             </div>
         </form>
     )
@@ -48,7 +48,7 @@ function LogInForm( {Login, error}){
 
 const openSignUp = (url) => {
     const newWindow = window.open(url);
-  }
+}
 
 export default LogInForm;
 

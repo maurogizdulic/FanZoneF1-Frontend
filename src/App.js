@@ -9,6 +9,7 @@ import Betting from './components/betting';
 import LogIn from './components/login';
 import WebPage from './componentsLatest/cardWebPage';
 import SignUp from './componentsSignUp/signup';
+import TableStandings from './componentsStandings/tableStandings';
 
 function App() {
 
