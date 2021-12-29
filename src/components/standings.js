@@ -1,4 +1,5 @@
 import React from 'react';
+import TableStandings from '../componentsStandings/tableStandings';
  /* 
 const Standings = () => {
   return (
@@ -21,7 +22,7 @@ class Standings extends React.Component {
   render() { 
     return (
       <div>
-      <h1>Standings</h1>
+          <TableStandings />
     </div>
     );
   }
