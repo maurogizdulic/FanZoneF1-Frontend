@@ -13,8 +13,8 @@ import Paper from '@mui/material/Paper';
 class TableStandings extends React.Component {
 
     state = {
-        getUsername: [''][''],
-        getPoints: [''][''],
+        getUsername: [''],
+        getPoints: [''],
         key: ['']
     }
 
@@ -28,30 +28,15 @@ class TableStandings extends React.Component {
         
             console.log(this.state.getUsername);
 
-            this.state.getPoints[0] = 10; 
-            this.state.getPoints[1] = 15; 
-            this.state.getPoints[2] = 5; 
-            this.state.getPoints[3] = 20; 
-
             console.log(this.state.getPoints);
 
             for(var i = 0; i < this.state.getUsername.length; i++)
             {
                 this.state.key[i] = i;
-            }
-
-            
-                this.state.getPoints.sort(function(a, b) {
-                    return b - a;
-                });
-
-                console.log(this.state.getPoints);
-        
+            }                   
         });
 
         console.log(this.state.key);
-
-        
     }
 
 
@@ -67,11 +52,17 @@ class TableStandings extends React.Component {
                                 <TableCell>Points</TableCell>
                             </TableRow>
                         </TableHead>
-        <TableBody>
-          
-        </TableBody>
-      </Table>
-    </TableContainer>
+                        <TableBody> 
+                            {this.state.key.map((row) => (
+                                <TableRow key={this.state.key[row]}>
+                                    <TableCell align="left">{this.state.key[row] + 1}</TableCell>
+                                    <TableCell align="left">{this.state.getUsername[row]}</TableCell>
+                                    <TableCell align="left">{this.state.getPoints[row]}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                     </Table>
+                </TableContainer>
             </div>
         );
     }
