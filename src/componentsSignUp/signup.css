@@ -100,8 +100,32 @@ form .form-inner input[type="submit"] {
   cursor: pointer;
 }
 
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    to right,
+    #ffce00 50%,
+    #ffce00 50%,
+    #ff4880 50%
+  );
+  background-size: 200%;
+  background-position: 0%;
+  transition: 0.4s;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 form .form-inner input[type="submit"]:hover {
   background-position: 100% 0%;
+}
+
+.btn:hover {
+  background-position: 100% 0%;
+  text-decoration: none;
 }
 
 .welcome {

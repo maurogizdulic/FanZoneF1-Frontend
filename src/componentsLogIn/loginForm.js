@@ -20,7 +20,7 @@ function LogInForm({ Login, error }) {
         e.preventDefault();
         console.log(details);
         console.log("Nez");
-        Login(details);
+        //Login(details);
     }
 
     return (

@@ -1,4 +1,3 @@
-//import React, { Component } from 'react';
 import '../componentsLogIn/login.css';
 import React, { useState } from 'react';
 import LogInForm from '../componentsLogIn/loginForm';
@@ -32,7 +31,7 @@ function LogIn() {
 
     return (
         <div className='login'>
-            {(user.email != "") ? (
+            {(user.username != "") ? (
                 <form>
                     <div className='form-inner'>
                         <h2>Welcome, <span>{localStorage.getItem("username")}</span></h2>

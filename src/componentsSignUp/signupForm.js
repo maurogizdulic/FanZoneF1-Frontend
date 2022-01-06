@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function SignUpForm( {Signup, error}){
 
-    const [details, setDetails] = useState({name: "", email: "", birth:"", password: ""});
+    const [details, setDetails] = useState({username: "", email: "", dateOfBirth:"", password: ""});
 
     const submitHandler = e => {
         e.preventDefault();
@@ -15,8 +15,8 @@ function SignUpForm( {Signup, error}){
             <div className="form-inner">
                 <h2>Sign up</h2>
                 <div className="form-group">
-                    <label htmlFor="name">Username:</label>
-                    <input type="text" required name="name" id="name" onChange={e => setDetails({...details, name: e.target.value})} value={details.name}/>
+                    <label htmlFor="username">Username:</label>
+                    <input type="text" required name="username" id="username" onChange={e => setDetails({...details, username: e.target.value})} value={details.username}/>
                 </div>
 
                 <div className="form-group">
@@ -25,8 +25,8 @@ function SignUpForm( {Signup, error}){
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="password">Birth date:</label>
-                    <input type="password" required name="birth" id="birth" onChange={e => setDetails({...details, birth: e.target.value})} value={details.birth}/>
+                    <label htmlFor="dateOfBirth">Birth date:</label>
+                    <input type="text" required name="dateOfBirth" id="dateOfBirth" onChange={e => setDetails({...details, dateOfBirth: e.target.value})} value={details.dateOfBirth}/>
                 </div>
 
                 <div className="form-group">
