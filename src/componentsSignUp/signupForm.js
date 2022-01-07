@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 function SignUpForm( {Signup, error}){
-
     const [details, setDetails] = useState({username: "", email: "", dateOfBirth:"", password: ""});
 
     const submitHandler = e => {
@@ -14,6 +13,7 @@ function SignUpForm( {Signup, error}){
             <form onSubmit={submitHandler}>
             <div className="form-inner">
                 <h2>Sign up</h2>
+                {(error != "") ? (<div className='error'>{error}</div>) : ""}
                 <div className="form-group">
                     <label htmlFor="username">Username:</label>
                     <input type="text" required name="username" id="username" onChange={e => setDetails({...details, username: e.target.value})} value={details.username}/>
@@ -25,7 +25,7 @@ function SignUpForm( {Signup, error}){
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="dateOfBirth">Birth date:</label>
+                    <label htmlFor="dateOfBirth">Birth date(dd.mm.yyyy.):</label>
                     <input type="text" required name="dateOfBirth" id="dateOfBirth" onChange={e => setDetails({...details, dateOfBirth: e.target.value})} value={details.dateOfBirth}/>
                 </div>
 

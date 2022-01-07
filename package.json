@@ -1,5 +1,6 @@
 {
-  "name": "f1funzone",
+  "homepage": "/latest",
+  "name": "f1fanzone",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

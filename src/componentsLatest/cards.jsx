@@ -41,7 +41,7 @@ class Cards extends React.Component {
             )
             :
             (
-                <div class="wrapper">
+                <div className="wrapper">
 
                     {this.state.number.map((i) => <Card key={this.state.number[i]}
                         title={this.state.titlesArray[i]}

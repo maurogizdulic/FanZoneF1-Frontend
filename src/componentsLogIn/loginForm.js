@@ -18,9 +18,7 @@ function LogInForm({ Login, error }) {
 
     const submitHandler = e => {
         e.preventDefault();
-        console.log(details);
-        console.log("Nez");
-        //Login(details);
+        Login(details);
     }
 
     return (
@@ -37,14 +35,14 @@ function LogInForm({ Login, error }) {
                     <input type="password" required name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
                 </div>
                 <input type="submit" className='btn' value="Log in" />
-                <input type="button" className='btn' value="Sign up" onClick={() => openSignUp("./signup")} />
+                <input type="button" className='btn' value="Sign up" onClick={() => openSignUp("/signup")} />
             </div>
         </form>
     )
 }
 
 const openSignUp = (url) => {
-    const newWindow = window.open(url);
+    const newWindow = window.location.replace(url);
 }
 
 export default LogInForm;

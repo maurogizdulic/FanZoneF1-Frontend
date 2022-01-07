@@ -2,10 +2,13 @@ import '../componentsLogIn/login.css';
 import React, { useState } from 'react';
 import LogInForm from '../componentsLogIn/loginForm';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { setUserSession } from '../util/common';
+import { removeUserSession } from '../util/common';
 
 function LogIn() {
-    const [user, setUser] = useState({ username: "", password: "" });
     const [error, setError] = useState("");
+    const [status, setStatus] = useState({status: ""});
 
     const Login = details => {
         console.log(details);
@@ -14,31 +17,35 @@ function LogIn() {
         axios.post("http://localhost:8080/user/login", {}, { headers: { 'Authorization': "Basic " + token } })
             .then(res => {
                 console.log(res);
-                if (res.status != 200)
-                    setUser({});
-                else {
-                    localStorage.setItem("username", details.username);
-                    localStorage.setItem("password", details.password);
+                setStatus({status: res.status});
+                if (res.status != 200){
+                    setError(res.data.message);
+                    Logout();
                 }
+                else {
+                    setUserSession(token);
+                    console.log(status);
+                }
+                console.log("local token: " + localStorage.getItem("token"));
+            }
+            ).catch( err =>{
+                setStatus({status: err.response.status});
+                setError({error : err.response.data.message});
             }
             )
     }
 
 
     const Logout = () => {
-        setUser({ username: "", password: "" });
+        removeUserSession();
+        setStatus({status:""})
     }
-
+    
     return (
         <div className='login'>
-            {(user.username != "") ? (
-                <form>
-                    <div className='form-inner'>
-                        <h2>Welcome, <span>{localStorage.getItem("username")}</span></h2>
-                        <input type="button" value="Logout" onClick={Logout} />
-                    </div>
-                </form>
-            ) : (<LogInForm Login={Login} error={error} />)}
+            {(status.status == 200) ? (
+                window.location.replace("/latest")
+            ) : (<LogInForm Login={Login} error={error.error} />)}
         </div>
     )
 }

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './componentsNavbar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Latest from './components/latest';
 import Schedule from './components/schedule';
@@ -9,13 +9,16 @@ import Betting from './components/betting';
 import LogIn from './components/login';
 import WebPage from './componentsLatest/cardWebPage';
 import SignUp from './componentsSignUp/signup';
+import Logout from './components/logout.js'
 import TableStandings from './componentsStandings/tableStandings';
+import {getToken} from './util/common.js'
 
-function App() {
 
+function App(){
+  
   return (
     <Router>
-      <Navbar />
+      <Navbar/>
       <Switch>
         <Route path='/latest' component={Latest} />
         <Route path='/schedule' component={Schedule} />
@@ -24,6 +27,7 @@ function App() {
         <Route path='/login' component={LogIn} />
         <Route path='/cardWebPage' component={WebPage} />
         <Route path='/signup' component={SignUp}/>
+        <Route path="/logout" component={Logout}/>
       </Switch>
     </Router>
   );

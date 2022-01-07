@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import {
   Nav,
   NavLink,
@@ -6,8 +7,11 @@ import {
   NavBtn,
   NavBtnLink,
 } from './navbarElements';
+import { getToken, removeUserSession } from '../util/common';
+import Logout from '../components/logout';
 
 const Navbar = () => {
+  
   return (
 
     <Nav>
@@ -25,9 +29,15 @@ const Navbar = () => {
           Betting
         </NavLink>
       </NavMenu>
+      {(getToken()) ?
+      <NavBtn>
+         <NavBtnLink to="/logout">Logout</NavBtnLink>
+      </NavBtn>
+      : 
       <NavBtn>
         <NavBtnLink to='/login'>Log in/Sign up</NavBtnLink>
       </NavBtn>
+      }
     </Nav>
   );
 };

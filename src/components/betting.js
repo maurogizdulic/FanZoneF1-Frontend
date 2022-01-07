@@ -1,4 +1,6 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+import { getToken } from '../util/common';
 
 /*const Betting = () => {
   return (
@@ -17,9 +19,9 @@ import React from 'react';
 
 class Betting extends React.Component {
   render() { 
-    return (    <div>
-      <button> ODI NA SCHEDULE </button>
-      </div>) ;
+    return (
+      (getToken()) ? (<div><h2>Logiran si!</h2></div>) : (<Redirect to="/login"/>)
+    )
   }
 }
  
