@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import BettingForm from '../componentsBetting/bettingForm';
 import { getToken } from '../util/common';
 
 /*const Betting = () => {
@@ -20,7 +21,7 @@ import { getToken } from '../util/common';
 class Betting extends React.Component {
   render() { 
     return (
-      (getToken()) ? (<div><h2>Logiran si!</h2></div>) : (<Redirect to="/login"/>)
+      (getToken()) ? (<BettingForm/>) : (<Redirect to="/login"/>)
     )
   }
 }

@@ -83,6 +83,7 @@ form .form-inner .form-group input:focus {
 }
 
 form .form-inner input[class="btn"] {
+  margin-right: 1rem;
   display: inline-block;
   padding: 10px 15px;
   border-radius: 8px;
