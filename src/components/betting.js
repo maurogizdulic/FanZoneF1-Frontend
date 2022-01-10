@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import BettingForm from '../componentsBetting/bettingForm';
 import { getToken } from '../util/common';
+import axios from 'axios';
 
 /*const Betting = () => {
   return (
@@ -18,12 +19,18 @@ import { getToken } from '../util/common';
   );
 };*/
 
-class Betting extends React.Component {
-  render() { 
-    return (
-      (getToken()) ? (<BettingForm/>) : (<Redirect to="/login"/>)
-    )
+
+function Betting(){
+  
+  const Bet = (winners, season) => {
+    console.log("AM HERE!");
+    console.log(winners.first);
   }
+  return (
+
+    (getToken()) ? (<BettingForm Bet={Bet}/> ) : (<Redirect to="/login"/>)
+  )
+  
 }
  
 export default Betting;
