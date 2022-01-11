@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import BettingForm from '../componentsBetting/bettingForm';
 import { getToken } from '../util/common';
+import '../componentsBetting/betting.css';
 import axios from 'axios';
 
 /*const Betting = () => {
@@ -27,8 +28,7 @@ function Betting(){
     console.log(winners.first);
   }
   return (
-
-    (getToken()) ? (<BettingForm Bet={Bet}/> ) : (<Redirect to="/login"/>)
+    (getToken()) ? (<div className='betting'><BettingForm Bet={Bet}/> </div>) : (<Redirect to="/login"/>)
   )
   
 }

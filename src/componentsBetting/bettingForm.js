@@ -53,7 +53,7 @@ function BettingForm({Bet}) {
                     <h2>Pick your winners!</h2>
                     <div className="form-group">
                         <label htmlFor='first'>First: </label>
-                        <select value={driversList.driversList[0].permanentNumber} onChange={e => setWinners({...winners, second: e.target.value})}>
+                        <select onChange={e => setWinners({...winners, second: e.target.value})}>
                         {driversList.keys.map((i) => <option key={driversList.keys[i]} value={driversList.driversList[i].permanentNumber}>{driversList.driversList[i].permanentNumber} {driversList.driversList[i].familyName}</option>)}
                         </select>
                     </div>
