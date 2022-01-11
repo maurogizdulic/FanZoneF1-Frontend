@@ -19,18 +19,28 @@ import { BrowserRouter as Router, Switch,
   
 export default Schedule;*/
 
-class Schedule extends React.Component {
+function Schedule(){
   //http://ergast.com/api/f1/2012 -> link za gettanje schedulea.
+  const [season, setSeason] = useState({season: "", race:"", isUpdated: false});
+  
+  useEffect(() => {
+    if(season.isUpdated == false){
+        let response = axios.get('http://localhost:8080/vote/currentrace')
+        .then(res => {
+            setSeason({season: res.data.currentSeason, race: res.data.currentRace, isUpdated: true});
+        })
+    }
+  });
 
-  render() { 
+   
 
-    return (
-      <div>
-      <h1>Schedule</h1>
-      <Link to="/betting" className="btn btn-primary">Sign up</Link>
+  return (
+    <div>
+        <h1>Schedule</h1>
+        <Link to="/betting" className="btn btn-primary">Sign up</Link>
     </div>
-    );
-  }
+  );
+  
 }
  
 export default Schedule;
