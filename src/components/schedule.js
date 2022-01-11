@@ -20,7 +20,7 @@ import { BrowserRouter as Router, Switch,
 export default Schedule;*/
 
 class Schedule extends React.Component {
-
+  //http://ergast.com/api/f1/2012 -> link za gettanje schedulea.
 
   render() { 
 

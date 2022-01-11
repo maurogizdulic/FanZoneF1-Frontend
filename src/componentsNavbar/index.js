@@ -30,13 +30,14 @@ const Navbar = () => {
         </NavLink>
       </NavMenu>
       {(getToken()) ?
-      <NavBtn>
-         <NavBtnLink to="/logout">Logout</NavBtnLink>
-      </NavBtn>
-      : 
-      <NavBtn>
-        <NavBtnLink to='/login'>Log in/Sign up</NavBtnLink>
-      </NavBtn>
+        <NavBtn>
+          <NavBtnLink to="/dashboard">Dashboard</NavBtnLink>
+          <NavBtnLink to="/logout">Logout</NavBtnLink>
+        </NavBtn>
+        : 
+        <NavBtn>
+          <NavBtnLink to='/login'>Log in/Sign up</NavBtnLink>
+        </NavBtn>
       }
     </Nav>
   );
