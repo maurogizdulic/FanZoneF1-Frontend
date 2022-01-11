@@ -1,8 +1,9 @@
 import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
 import Betting from '../components/betting';
+import {Link} from 'react-router-dom';
 
-function BettingForm({Bet}) {
+function BettingForm({Bet, error}) {
 
     // https://ergast.com/api/f1/2020/drivers.json
 
@@ -46,11 +47,12 @@ function BettingForm({Bet}) {
         Bet(winners, season);
     }
 
-    return ( 
+    return (
         <div id="bettingForm" onLoad={getDrivers()}>
             <form onSubmit={submitHandler}>
                 <div className='form-inner'>
                     <h2>Pick your winners!</h2>
+                    {(error != "") ? (<div className='error'>{error}</div>) : ""}
                     <div className="form-group">
                         <label htmlFor='first'>First: </label>
                         <select onChange={e => setWinners({...winners, first: e.target.value})}>

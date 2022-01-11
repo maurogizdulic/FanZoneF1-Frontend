@@ -12,7 +12,7 @@ import SignUp from './componentsSignUp/signup';
 import Logout from './components/logout.js'
 import TableStandings from './componentsStandings/tableStandings';
 import {getToken} from './util/common.js'
-
+import Dashboard from './componentsDashboard/dashboard.js';
 
 function App(){
   
@@ -28,6 +28,7 @@ function App(){
         <Route path='/cardWebPage' component={WebPage} />
         <Route path='/signup' component={SignUp}/>
         <Route path="/logout" component={Logout}/>
+        <Route path="/dashboard" component={Dashboard}/>
       </Switch>
     </Router>
   );
