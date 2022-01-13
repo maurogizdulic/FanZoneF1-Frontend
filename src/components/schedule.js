@@ -3,23 +3,8 @@ import axios from 'axios';
 import { BrowserRouter as Router, Switch, 
   Route, Redirect, Link} from "react-router-dom";
 import { KeyboardArrowDown } from '@material-ui/icons';
-  
-/*const Schedule = () => {
-  return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'Right',
-        alignItems: 'Right',
-        height: '100vh'
-      }}
-    >
-      <h1>Schedule</h1>
-    </div>
-  );
-};
-  
-export default Schedule;*/
+import '../componentsSchedule/schedule.css';
+import ScheduleCard from '../componentsSchedule/scheduleCard';
 
 function Schedule(){
   //http://ergast.com/api/f1/2012 -> link za gettanje schedulea.
@@ -51,6 +36,8 @@ function Schedule(){
         let datesArr = res.data.MRData.RaceTable.Races.map((i) => i.date);
         let timesArr = res.data.MRData.RaceTable.Races.map((i) => i.time);
         let keyArr = [];
+
+        console.log(namesArr);
         for(let i = 0; i < namesArr.length; i++){
           keyArr[i] = i;
         }
@@ -69,10 +56,15 @@ function Schedule(){
   }
 
   return (
-    <div onLoad={getSchedule()}>
-        <h1>Schedule</h1>
-        {console.log(circuits.circuitNames)}
-        <Link to="/betting" className="btn btn-primary">Sign up</Link>
+    <div className="wrapper" onLoad={getSchedule()}>
+    {circuits.keys.map((i) => <ScheduleCard key={circuits.keys[i]}
+        cirName={circuits.circuitNames[i]}
+        loc={circuits.localities[i]}
+        cou={circuits.countries[i]}
+        dat={circuits.dates[i]}
+        time={circuits.times[i]}
+         />
+    )}
     </div>
   );
   
