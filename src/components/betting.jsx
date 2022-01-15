@@ -5,14 +5,22 @@ import { getToken } from '../util/common';
 import '../componentsBetting/betting.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
-import Logout from './logout';
-import { NewReleasesTwoTone } from '@material-ui/icons';
 
 function Betting() {
   //const [lastRace, setRace] = useState({lastRace:"", lastSeason:""})
   const [voted, setVoted] = useState({ voted: false});
   const [error, setError] = useState({ error: "" });
   const [temp, setTemp] = useState({season: "errorState", race: "errorState"});
+  
+  useEffect(()=>{
+    if(voted ===false && (sessionStorage.getItem("season") == temp.season && sessionStorage.getItem("race") == temp.race)){
+      setVoted({voted:true});
+    }
+  })
+
+  const sendData = season =>{
+    setTemp({season: season.season, race: season.race})
+  };
 
   const Bet = (winners, season) => {
 
@@ -45,13 +53,13 @@ function Betting() {
     <div>
       {
         (getToken()) ?
-          (voted.voted == true || (sessionStorage.getItem("season") == temp.season && sessionStorage.getItem("race") == temp.race)) ?
+          (voted.voted == true) ?
             (<div className='welcome'>
-              <h2>You have voted!</h2>
+              <h2>You have voted for race {temp.race} of season {temp.season}</h2>
               <Link to="/standings" className="btn">{(console.log(sessionStorage.getItem("season") + "==" + temp.season))}Check standings</Link>
             </div>)
             :
-            (<div className='betting'><BettingForm Bet={Bet} error={error.error} voted={voted}/>{(console.log(sessionStorage.getItem("season") + "==" + temp.season))}</div>)
+            (<div className='betting'><BettingForm Bet={Bet} error={error.error} sendData={sendData}/>{(console.log(sessionStorage.getItem("season") + "==" + temp.season))}</div>)
           :
           (<Redirect to="/login" />)
       }

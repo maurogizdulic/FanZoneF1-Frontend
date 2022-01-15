@@ -1,10 +1,8 @@
 import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
-import Betting from '../components/betting';
-import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 
-function BettingForm({ Bet, error, voted }) {
+function BettingForm({ Bet, error, sendData }) {
 
     // https://ergast.com/api/f1/2020/drivers.json
 
@@ -16,6 +14,10 @@ function BettingForm({ Bet, error, voted }) {
         if (season.isUpdated == false) {
             let response = axios.get('http://localhost:8080/vote/currentrace')
                 .then(res => {
+                    sendData({
+                        season: res.data.currentSeason,
+                        race: res.data.currentRace
+                    })
                     setSeason({ season: res.data.currentSeason, race: res.data.currentRace, isUpdated: true });
                 })
         }
@@ -57,7 +59,7 @@ function BettingForm({ Bet, error, voted }) {
         <div id="bettingForm" onLoad={getDrivers()}>
             <form onSubmit={submitHandler}>
                 <div className='form-inner'>
-                    <h2>Pick your winners!</h2>
+                    <h2>Pick your winners for race {season.race} of season {season.season}!</h2>
                     {(error != "") ? (<div className='error'>{error}</div>) : ""}
                     <div className="form-group">
                         <label htmlFor='first'>First: </label>
