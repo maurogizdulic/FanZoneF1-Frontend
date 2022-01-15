@@ -48,10 +48,10 @@ function Betting() {
           (voted.voted == true || (sessionStorage.getItem("season") == temp.season && sessionStorage.getItem("race") == temp.race)) ?
             (<div className='welcome'>
               <h2>You have voted!</h2>
-              <Link to="/standings" className="btn">Check standings</Link>
+              <Link to="/standings" className="btn">{(console.log(sessionStorage.getItem("season") + "==" + temp.season))}Check standings</Link>
             </div>)
             :
-            (<div className='betting'><BettingForm Bet={Bet} error={error.error} voted={voted}/></div>)
+            (<div className='betting'><BettingForm Bet={Bet} error={error.error} voted={voted}/>{(console.log(sessionStorage.getItem("season") + "==" + temp.season))}</div>)
           :
           (<Redirect to="/login" />)
       }

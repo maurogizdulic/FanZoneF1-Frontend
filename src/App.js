@@ -13,24 +13,32 @@ import Logout from './components/logout.js'
 import TableStandings from './componentsStandings/tableStandings';
 import { getToken } from './util/common.js'
 import Dashboard from './componentsDashboard/dashboard.js';
+import AlertMUITemplate from "react-alert-template-mui";
+import { positions, Provider } from "react-alert";
+
+const options = {
+  position: positions.MIDDLE
+};
 
 function App() {
 
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route path='/latest' component={Latest} />
-        <Route path='/schedule' component={Schedule} />
-        <Route path='/standings' component={Standings} />
-        <Route path='/betting' component={Betting} />
-        <Route path='/login' component={LogIn} />
-        <Route path='/cardWebPage' component={WebPage} />
-        <Route path='/signup' component={SignUp} />
-        <Route path="/logout" component={Logout} />
-        <Route path="/dashboard" component={Dashboard} />
-      </Switch>
-    </Router>
+    <Provider template={AlertMUITemplate} {...options}>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/latest' component={Latest} />
+          <Route path='/schedule' component={Schedule} />
+          <Route path='/standings' component={Standings} />
+          <Route path='/betting' component={Betting} />
+          <Route path='/login' component={LogIn} />
+          <Route path='/cardWebPage' component={WebPage} />
+          <Route path='/signup' component={SignUp} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/dashboard" component={Dashboard} />
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 

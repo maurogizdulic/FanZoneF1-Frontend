@@ -1,25 +1,52 @@
-import { Component } from "react";
+import axios from "axios";
+import { Component, useState } from "react";
 import { Redirect } from "react-router-dom";
-import { getToken } from "../util/common";
+import { getToken, removeUserSession } from "../util/common";
+import DeleteForm from "./deleteForm";
+import { useAlert } from 'react-alert';
+import Logout from "../components/logout";
 
 function Dashboard(){//Form
+    const [status, setStatus]  = useState({status: ""});
+    const alert = useAlert();
 
-    const deleteHandler = () =>{
-
+    const Delete = (email) =>{
+        let postData = {
+            email: email.email
+        }
+        console.log(postData);
+        let token = getToken();
+        axios.defaults.headers.common['Authorization'] = token;
+        axios.post(
+            "http://localhost:8080/user/delete",
+            postData,
+            { headers: { Authorization : `Basic ${token}` },   } )
+        .then( res => {
+            console.log(res);
+            if(res.status == 200){
+                alert.show("You have succesfully deleted your account", 
+                    {
+                        type: 'success',
+                        onClose: () => {
+                            Logout();
+                        }
+                    }
+                );
+                removeUserSession();
+            }
+        }).catch(err => {
+            console.log(err.response);
+            if(err.response.status == 400){
+                console.log(err.response);
+            }
+        })
+        console.log(email);
     };
 
-    return ((getToken()) ? 
+    return ((getToken()) ?
     <div>
-        <form>
-            <div className='form-inner'>
-                <h2>Dashboard</h2>
-                <div className="form-group">
-                    <input type="button"  value="Delete account" className="btn" onClick={() => deleteHandler}/>
-                </div>
-            </div>
-        </form>
+        <DeleteForm Delete={Delete}/>
     </div> 
-    
     : 
     <Redirect to="/login"/>);
 }
