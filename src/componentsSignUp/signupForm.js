@@ -4,17 +4,43 @@ function SignUpForm( {Signup, error}){
     const [details, setDetails] = useState({username: "", email: "", dateOfBirth:"", password: ""});
 
     useEffect(() => {
-        if(details.dateOfBirth.length === 2 || details.dateOfBirth.length === 5 || details.dateOfBirth.length === 10){
-            setDetails({...details, dateOfBirth: details.dateOfBirth + "."});
-        }
+        validateDate();
     })
+
+
 
     const submitHandler = e => {
         e.preventDefault();
         Signup(details);
     }
 
-        return (
+    const validateDate = () => {
+        if(details.dateOfBirth.length === 2 || details.dateOfBirth.length === 5 || details.dateOfBirth.length === 10){
+            setDetails({...details, dateOfBirth: details.dateOfBirth + "."});
+        }
+        if (details.dateOfBirth) {
+            for (var i = 0; i < details.dateOfBirth.length; i++) {
+                if(isNaN(details.dateOfBirth[i])){
+                    if(details.dateOfBirth[i] !== '.'){
+                        setDetails({...details, dateOfBirth: ""});
+                    }
+                }
+            }
+            if(details.dateOfBirth.length >= 2){
+                if(Number(details.dateOfBirth[0] + details.dateOfBirth[1]) > 31 || Number(details.dateOfBirth[3] + details.dateOfBirth[4]) < 0){
+                    setDetails({...details, dateOfBirth: ""})
+                }
+            }
+            if(details.dateOfBirth.length >= 5){
+                if(Number(details.dateOfBirth[3] + details.dateOfBirth[4]) > 12 || Number(details.dateOfBirth[3] + details.dateOfBirth[4]) < 0){
+                    setDetails({...details, dateOfBirth: ""})
+                }
+            }
+        }
+
+    }
+
+    return (
             <form onSubmit={submitHandler}>
             <div className="form-inner">
                 <h2>Sign up</h2>
@@ -42,7 +68,7 @@ function SignUpForm( {Signup, error}){
                 <input type="submit" value="Sign up"/>
             </div>
         </form>
-        );
+    );
 }
 
 export default SignUpForm;
