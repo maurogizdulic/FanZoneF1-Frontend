@@ -11,14 +11,14 @@ import WebPage from './componentsLatest/cardWebPage';
 import SignUp from './componentsSignUp/signup';
 import Logout from './components/logout.js'
 import TableStandings from './componentsStandings/tableStandings';
-import {getToken} from './util/common.js'
+import { getToken } from './util/common.js'
 import Dashboard from './componentsDashboard/dashboard.js';
 
-function App(){
-  
+function App() {
+
   return (
     <Router>
-      <Navbar/>
+      <Navbar />
       <Switch>
         <Route path='/latest' component={Latest} />
         <Route path='/schedule' component={Schedule} />
@@ -26,9 +26,9 @@ function App(){
         <Route path='/betting' component={Betting} />
         <Route path='/login' component={LogIn} />
         <Route path='/cardWebPage' component={WebPage} />
-        <Route path='/signup' component={SignUp}/>
-        <Route path="/logout" component={Logout}/>
-        <Route path="/dashboard" component={Dashboard}/>
+        <Route path='/signup' component={SignUp} />
+        <Route path="/logout" component={Logout} />
+        <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </Router>
   );
