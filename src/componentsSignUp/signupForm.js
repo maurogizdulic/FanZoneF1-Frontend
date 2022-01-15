@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function SignUpForm( {Signup, error}){
     const [details, setDetails] = useState({username: "", email: "", dateOfBirth:"", password: ""});
 
+    useEffect(() => {
+        if(details.dateOfBirth.length === 2 || details.dateOfBirth.length === 5 || details.dateOfBirth.length === 10){
+            setDetails({...details, dateOfBirth: details.dateOfBirth + "."});
+        }
+    })
+
     const submitHandler = e => {
         e.preventDefault();
-
         Signup(details);
     }
 
@@ -26,7 +31,7 @@ function SignUpForm( {Signup, error}){
 
                 <div className="form-group">
                     <label htmlFor="dateOfBirth">Birth date(dd.mm.yyyy.):</label>
-                    <input type="text" required name="dateOfBirth" id="dateOfBirth" onChange={e => setDetails({...details, dateOfBirth: e.target.value})} value={details.dateOfBirth}/>
+                    <input type="text" value={details.dateOfBirth} required name="dateOfBirth" id="dateOfBirth" onChange={e => setDetails({...details, dateOfBirth: e.target.value})} value={details.dateOfBirth}/>
                 </div>
 
                 <div className="form-group">
