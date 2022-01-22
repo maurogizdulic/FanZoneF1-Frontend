@@ -13,7 +13,7 @@
   background-color: white;
   border-radius: 0.2rem;
   width: 18rem;
-  height: 13rem;
+  height: 16rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -21,10 +21,10 @@
   transition: transform 200ms ease-in;
   background-image: linear-gradient(
     to right,
-    #eeedc5 20%,
-    #f6e18d 40%,
-    #ffae61 60%,
-    #f69483 100%
+    #ffffff 20%,
+    #ecece9 40%,
+    #dadada 60%,
+    #b9b8b7 100%
   );
 }
 
@@ -49,6 +49,7 @@
 
 .cirName_div {
   background-color: red;
+  padding-bottom: 2%;
 }
 
 /*

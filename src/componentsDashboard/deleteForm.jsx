@@ -1,6 +1,7 @@
 import { Component, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { getToken } from "../util/common";
+import "../componentsDashboard/dashboard-style.css";
 
 function DeleteForm({Delete, error}){//Form
     const [email, setEmail] = useState({email: ""});
@@ -21,8 +22,8 @@ function DeleteForm({Delete, error}){//Form
                 <div className="form-group">
                     <label>Insert your email:</label>
                     <input type="email" onChange={e => setEmail({...email, email: e.target.value})}/>
-                    <input type="submit"  value="Delete account" className="btn" />
                 </div>
+                <input type="submit"  value="Delete account" className="btn" />
             </div>
         </form>
     </div> 

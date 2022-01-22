@@ -26,7 +26,7 @@ function BettingForm({ Bet, error, sendData }) {
         {
             let element = (<input name="btnSubmit" type="submit" className='btn' value="Vote" />);
             ReactDOM.render(element, document.getElementById("submitDiv"));
-        }
+        }   
     });
 
     const getDrivers = () => {
@@ -63,20 +63,20 @@ function BettingForm({ Bet, error, sendData }) {
                     {(error != "") ? (<div className='error'>{error}</div>) : ""}
                     <div className="form-group">
                         <label htmlFor='first'>First: </label>
-                        <select onChange={e => setWinners({ ...winners, first: e.target.value })}>
+                        <select id="first" className="form-control" onChange={e => setWinners({ ...winners, first: e.target.value })}>
                             <option value="" disabled selected> {"Select Driver"} </option> {driversList.keys.map((i) => <option key={driversList.keys[i]} value={driversList.driversList[i].permanentNumber}>{driversList.driversList[i].permanentNumber} {driversList.driversList[i].familyName}</option>)}
                         </select>
                     </div>
                     <div className="form-group">
                         <label htmlFor='second'>Second: </label>
-                        <select onChange={e => setWinners({ ...winners, second: e.target.value })}>
+                        <select id="second" className="form-control" onChange={e => setWinners({ ...winners, second: e.target.value })}>
                             <option value="" disabled selected> {"Select Driver"} </option> {driversList.keys.map((i) => <option key={driversList.keys[i]} value={driversList.driversList[i].permanentNumber}>{driversList.driversList[i].permanentNumber} {driversList.driversList[i].familyName}</option>)}
                         </select>
                     </div>
 
                     <div className="form-group">
                         <label htmlFor='third'>Third: </label>
-                        <select onChange={e => setWinners({ ...winners, third: e.target.value })}>
+                        <select id="third "className="form-control" onChange={e => setWinners({ ...winners, third: e.target.value })}>
                             <option value="" disabled selected> {"Select Driver"} </option> {driversList.keys.map((i) => <option key={driversList.keys[i]} value={driversList.driversList[i].permanentNumber}>{driversList.driversList[i].permanentNumber} {driversList.driversList[i].familyName}</option>)}
                         </select>
                     </div>

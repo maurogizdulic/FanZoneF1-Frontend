@@ -7,8 +7,6 @@ function SignUpForm( {Signup, error}){
         validateDate();
     })
 
-
-
     const submitHandler = e => {
         e.preventDefault();
         Signup(details);

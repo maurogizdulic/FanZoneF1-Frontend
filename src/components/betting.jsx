@@ -54,10 +54,11 @@ function Betting() {
       {
         (getToken()) ?
           (voted.voted == true) ?
-            (<div className='welcome'>
+            (<div className='App'>
+              <div className='welcome'>
               <h2>You have voted for race {temp.race} of season {temp.season}</h2>
-              <Link to="/standings" className="btn">{(console.log(sessionStorage.getItem("season") + "==" + temp.season))}Check standings</Link>
-            </div>)
+              <Link to="/standings" className="link">{(console.log(sessionStorage.getItem("season") + "==" + temp.season))}Check standings</Link>
+            </div></div>)
             :
             (<div className='betting'><BettingForm Bet={Bet} error={error.error} sendData={sendData}/>{(console.log(sessionStorage.getItem("season") + "==" + temp.season))}</div>)
           :

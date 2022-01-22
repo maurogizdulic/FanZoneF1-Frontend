@@ -23,7 +23,6 @@
 }
 
 h2 {
-  font-size: 15px;
   text-align: center;
 }
 
@@ -39,6 +38,7 @@ img {
 }
 
 .card_title {
+  font-size: 140%;
   padding: 1px;
 }
 

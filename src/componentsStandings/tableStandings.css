@@ -1,3 +1,7 @@
-Table {
+TableHead {
   background-color: rgb(179, 179, 179);
+}
+
+TableBody {
+  background-color: red;
 }

@@ -1,15 +1,19 @@
 import axios from "axios";
-import { Component, useState } from "react";
+import { React, Component, useState } from "react";
 import { Redirect } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { getToken, removeUserSession } from "../util/common";
 import DeleteForm from "./deleteForm";
 import UpdateForm from "./updateForm";
 import { useAlert } from 'react-alert';
 import Logout from "../components/logout";
+import {Tabs, Tab} from 'react-bootstrap-tabs';
+import "../componentsDashboard/dashboard-style.css";
 
 function Dashboard(){
     const alert = useAlert();
     const [error, setError] = useState({error: ""});
+    const [key, setKey] = useState('update')
 
     const Delete = (email) =>{
         let postData = {
@@ -85,13 +89,16 @@ function Dashboard(){
     }
 
     return ((getToken()) ?
-    <div>
-        <div>
-            <DeleteForm Delete={Delete} error={error.error}/>
-        </div>
-        <div> 
-            <UpdateForm Update={Update}/>
-        </div>
+    <div className="betting">
+        <Tabs
+            activeKey={key} 
+            onSelect={k => setKey(k)}
+            id="controlled-tab"
+            className="mb-3 myClass"
+        > 
+            <Tab eventKey='update' label="Update account"><UpdateForm Update={Update}/></Tab>
+            <Tab eventKey='delete' label="Delete account"><DeleteForm Delete={Delete} error={error.error}/></Tab>    
+        </Tabs>
     </div>
     : 
     <Redirect to="/login"/>);

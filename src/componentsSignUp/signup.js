@@ -38,7 +38,7 @@ function SignUp() {
         (status.status == 201) ? (
           <div className='welcome'>
             <h2>You're succesfully signed up!</h2>
-            <Link to="/login" className="btn">Login</Link>
+            <Link to="/login" className="link">Login</Link>
           </div>
         ) : (<SignUpForm Signup={Signup} error={error.error}/>)}
     </div>

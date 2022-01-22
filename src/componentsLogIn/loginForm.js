@@ -34,8 +34,8 @@ function LogInForm({ Login, error }) {
                     <label htmlFor="password">Password:</label>
                     <input type="password" required name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
                 </div>
-                <input type="submit" className='btn' value="Log in" />
-                <input type="button" className='btn' value="Sign up" onClick={() => openSignUp("/signup")} />
+                <input type="submit" className='link' value="Log in" />
+                <input type="button" className='link' value="Sign up" onClick={() => openSignUp("/signup")} />
             </div>
         </form>
     )
