@@ -127,6 +127,10 @@ form .form-inner input[className="btnUbd"] {
   cursor: pointer;
 }
 
+.btnMargin{
+  margin-bottom: 180px;
+}
+
 form .form-inner input[className="btn"]:hover {
   background-position: 100% 0%;
 }
