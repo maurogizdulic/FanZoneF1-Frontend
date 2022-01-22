@@ -23,7 +23,7 @@ function DeleteForm({Delete, error}){//Form
                     <label>Insert your email:</label>
                     <input type="email" onChange={e => setEmail({...email, email: e.target.value})}/>
                 </div>
-                <input type="submit"  value="Delete account" className="btn" />
+                <input type="submit"  value="Delete account" className="btnUpd" />
             </div>
         </form>
     </div> 

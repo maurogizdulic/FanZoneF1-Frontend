@@ -24,7 +24,7 @@ function BettingForm({ Bet, error, sendData }) {
 
         if(winners.first !== "" && winners.second !== "" && winners.third !== "")
         {
-            let element = (<input name="btnSubmit" type="submit" className='btn' value="Vote" />);
+            let element = (<input name="btnSubmit" type="submit" className='btnVote' value="Vote" />);
             ReactDOM.render(element, document.getElementById("submitDiv"));
         }   
     });
@@ -81,7 +81,6 @@ function BettingForm({ Bet, error, sendData }) {
                         </select>
                     </div>
                     <div id="submitDiv">
-                        <input name="btnSubmit" type="hidden" className='btn' value="Vote"/>
                     </div>
                 </div>
             </form>

@@ -39,7 +39,7 @@ function UpdateForm({Update}){
                         <label htmlFor="cnfrmpw">Confirm new password</label>
                         <input id="cnfrmpw" type="password" value={details.confirmPassword} onChange={e => setDetails({...details, confirmPassword: e.target.value})}/>
                     </div>
-                        <input type="submit"  value="Update account" className="btn" />
+                        <input type="submit"  value="Update account" className="btnUpd" />
                 </div>
             </form>
         </div> 
