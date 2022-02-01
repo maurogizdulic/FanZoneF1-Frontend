@@ -1,9 +1,8 @@
-//import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
-import '../componentsSignUp/signup.css';
-import React, { useState } from 'react';
-import SignUpForm from './signupForm';
 import axios from 'axios';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../componentsSignUp/signup.css';
+import SignUpForm from './signupForm';
 
 function SignUp() {
   const [error, setError] = useState({error: ""});

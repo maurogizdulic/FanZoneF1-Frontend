@@ -1,10 +1,8 @@
-import '../componentsLogIn/login.css';
-import React, { useState } from 'react';
-import LogInForm from '../componentsLogIn/loginForm';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import { setUserSession } from '../util/common';
-import { removeUserSession } from '../util/common';
+import React, { useState } from 'react';
+import '../componentsLogIn/login.css';
+import LogInForm from '../componentsLogIn/loginForm';
+import { removeUserSession, setUserSession } from '../util/common';
 
 function LogIn() {
     const [error, setError] = useState("");

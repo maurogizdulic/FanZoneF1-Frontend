@@ -1,10 +1,9 @@
-import React, { Component, useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import '../componentsBetting/betting.css';
 import BettingForm from '../componentsBetting/bettingForm';
 import { getToken } from '../util/common';
-import '../componentsBetting/betting.css';
-import axios from 'axios';
-import { Link } from 'react-router-dom'
 
 function Betting() {
   //const [lastRace, setRace] = useState({lastRace:"", lastSeason:""})

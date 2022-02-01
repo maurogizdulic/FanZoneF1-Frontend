@@ -1,14 +1,14 @@
 import axios from "axios";
-import { React, Component, useState } from "react";
-import { Redirect } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { React, useState } from "react";
+import { useAlert } from 'react-alert';
+import { Tab, Tabs } from 'react-bootstrap-tabs';
+import { Redirect } from "react-router-dom";
+import Logout from "../components/logout";
+import "../componentsDashboard/dashboard-style.css";
 import { getToken, removeUserSession } from "../util/common";
 import DeleteForm from "./deleteForm";
 import UpdateForm from "./updateForm";
-import { useAlert } from 'react-alert';
-import Logout from "../components/logout";
-import {Tabs, Tab} from 'react-bootstrap-tabs';
-import "../componentsDashboard/dashboard-style.css";
 
 function Dashboard(){
     const alert = useAlert();

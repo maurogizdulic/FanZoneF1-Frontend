@@ -1,10 +1,8 @@
-import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 function BettingForm({ Bet, error, sendData }) {
-
-    // https://ergast.com/api/f1/2020/drivers.json
 
     const [driversList, setDrivers] = useState({ driversList: "", keys: [], isAssigned: false });
     const [season, setSeason] = useState({ season: "", race: "", isUpdated: false });

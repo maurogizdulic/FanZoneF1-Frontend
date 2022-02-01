@@ -1,6 +1,4 @@
-import { Component, useState } from "react";
-import { Redirect } from "react-router-dom";
-import { getToken } from "../util/common";
+import { useState } from "react";
 import "../componentsDashboard/dashboard-style.css";
 
 function DeleteForm({Delete, error}){//Form

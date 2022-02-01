@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../componentsSchedule/scheduleCard.css';
 
 class ScheduleCard extends React.Component {

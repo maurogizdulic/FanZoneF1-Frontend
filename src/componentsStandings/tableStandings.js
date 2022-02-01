@@ -1,15 +1,14 @@
-import axios from 'axios';
-import React, { Component } from 'react';
-import '../componentsStandings/tableStandings.css';
+import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import axios from 'axios';
 import SearchBar from "material-ui-search-bar";
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react';
+import '../componentsStandings/tableStandings.css';
 
 
 function TableStandings() {
@@ -121,14 +120,3 @@ function TableStandings() {
 }
 
 export default TableStandings;
-
-/*
-  <table>
-                    <tr>
-                        <th>Position</th>
-                        <th>Username</th>
-                        <th>Points</th>
-                    </tr>
-
-                </table>
-*/

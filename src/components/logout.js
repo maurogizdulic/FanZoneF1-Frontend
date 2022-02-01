@@ -1,5 +1,3 @@
-import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import { removeUserSession } from '../util/common';
 
 const Logout = () => {

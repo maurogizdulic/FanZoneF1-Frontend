@@ -1,15 +1,4 @@
 import React, { useState } from 'react';
-import SignUp from '../componentsSignUp/signup';
-import SignUpForm from '../componentsSignUp/signupForm';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Redirect,
-    Link,
-} from "react-router-dom";
-import { margin } from '@mui/system';
-import axios from 'axios';
 
 
 function LogInForm({ Login, error }) {
@@ -46,11 +35,3 @@ const openSignUp = (url) => {
 }
 
 export default LogInForm;
-
-/*
-<Link to="/signup" className="btn btn-primary">Sign up</Link>
- <input type="text" className="username" id="username" placeholder='Username' required/>
-                <input type="password" className='password' id='password' placeholder='Password' required/>
-                <button onClick={() => {history.push('/profile')}}> Log in </button>
-                <p>Don't have an account? Sign up</p>
-*/

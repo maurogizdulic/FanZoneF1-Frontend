@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React from 'react';
+import { getToken } from '../util/common';
 import {
-  Nav,
-  NavLink,
-  NavMenu,
-  NavBtn,
-  NavBtnLink,
+    Nav, NavBtn,
+    NavBtnLink, NavLink,
+    NavMenu
 } from './navbarElements';
-import { getToken, removeUserSession } from '../util/common';
-import Logout from '../components/logout';
 
 const Navbar = () => {
   

@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { useState } from "react";
 import { useAlert } from 'react-alert';
 import "../componentsDashboard/dashboard-style.css";
 

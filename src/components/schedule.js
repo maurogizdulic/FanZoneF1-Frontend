@@ -1,13 +1,9 @@
-import {React, useEffect, useState} from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Switch, 
-  Route, Redirect, Link} from "react-router-dom";
-import { KeyboardArrowDown } from '@material-ui/icons';
+import { React, useEffect, useState } from 'react';
 import '../componentsSchedule/schedule.css';
 import ScheduleCard from '../componentsSchedule/scheduleCard';
 
 function Schedule(){
-  //http://ergast.com/api/f1/2012 -> link za gettanje schedulea.
   const [season, setSeason] = useState({season: "", race:"", isUpdated: false});
   const [circuits, setCircuits] = useState({circuitNames: [], localities: [], countries: [], dates: [] , times: [], keys: [], isAssigned: false})
 
